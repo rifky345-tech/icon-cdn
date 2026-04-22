@@ -1,3 +1,12 @@
 /*
   Access-Control-Allow-Origin: *
   Cache-Control: public, max-age=31536000, immutable
+
+/css/fonts.css
+  Cache-Control: public, max-age=31536000, immutable
+
+/webfonts/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/css/*
+  Cache-Control: public, max-age=31536000, immutable

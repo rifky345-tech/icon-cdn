@@ -49,7 +49,8 @@
         }
     }
 
-    loadCSS('fontawesome.css');
+    loadCSS('fonts.css');
+    loadCSS('fontawesome.min.css');
 
     function scanIcons() {
         const icons = document.querySelectorAll('[class*="fa-"], [class^="fa"]');
