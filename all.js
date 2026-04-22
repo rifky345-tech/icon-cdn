@@ -70,6 +70,10 @@
         scanIcons();
     }
 
-    const observer = new MutationObserver(scanIcons);
+    let debounceTimer;
+    const observer = new MutationObserver(() => {
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(scanIcons, 100);
+    });
     observer.observe(document.documentElement, { childList: true, subtree: true });
 })();
