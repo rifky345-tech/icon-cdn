@@ -11,7 +11,7 @@
     font-family: 'Font Awesome 7 Utility';
     font-style: normal;
     font-weight: 600;
-    font-display: block;
+    font-display: swap;
     src: url(../webfonts/fa-utility-semibold-600.woff2);
 }
 .fausb {

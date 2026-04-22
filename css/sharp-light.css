@@ -11,7 +11,7 @@
     font-family: 'Font Awesome 7 Sharp';
     font-style: normal;
     font-weight: 300;
-    font-display: block;
+    font-display: swap;
     src: url(../webfonts/fa-sharp-light-300.woff2);
 }
 .fasl {

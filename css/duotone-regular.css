@@ -11,7 +11,7 @@
     font-family: 'Font Awesome 7 Duotone';
     font-style: normal;
     font-weight: 400;
-    font-display: block;
+    font-display: swap;
     src: url(../webfonts/fa-duotone-regular-400.woff2);
 }
 .fadr {

@@ -11,7 +11,7 @@
     font-family: 'Font Awesome 7 Pro';
     font-style: normal;
     font-weight: 100;
-    font-display: block;
+    font-display: swap;
     src: url(../webfonts/fa-thin-100.woff2);
 }
 .fat {
