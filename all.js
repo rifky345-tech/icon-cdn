@@ -36,6 +36,8 @@
     };
 
     const loaded = new Set();
+    const injectedIcons = new Set();
+    let iconStyleEl = null;
 
     function loadCSS(file) {
         if (loaded.has(file)) return;
@@ -49,18 +51,78 @@
         }
     }
 
-    loadCSS('fontawesome.css');
+    // Load base CSS (structural only, ~8.5 KiB - almost 100% used)
+    loadCSS('fontawesome-base.css');
+
+    // Icon map: loaded async from icon-map.js
+    let iconMap = null;
+    let iconMapPromise = null;
+
+    function loadIconMap() {
+        if (iconMap) return Promise.resolve();
+        if (iconMapPromise) return iconMapPromise;
+        iconMapPromise = fetch(baseUrl.replace('css/', '') + 'icon-map.js')
+            .then(r => r.text())
+            .then(text => {
+                // Execute to get _IM variable
+                const fn = new Function(text + '; return _IM;');
+                iconMap = fn();
+            })
+            .catch(() => {
+                // Fallback: load full fontawesome.css if icon map fails
+                loadCSS('fontawesome.css');
+                iconMap = {};
+            });
+        return iconMapPromise;
+    }
+
+    function getOrCreateStyleEl() {
+        if (!iconStyleEl) {
+            iconStyleEl = document.createElement('style');
+            iconStyleEl.id = 'fa-icon-defs';
+            document.head.appendChild(iconStyleEl);
+        }
+        return iconStyleEl;
+    }
+
+    function injectIconRules(classes) {
+        if (!iconMap) return;
+        const el = getOrCreateStyleEl();
+        let newRules = '';
+        classes.forEach(cls => {
+            if (!injectedIcons.has(cls) && iconMap[cls]) {
+                newRules += '.' + cls + '{--fa:' + iconMap[cls] + '}';
+                injectedIcons.add(cls);
+            }
+        });
+        if (newRules) {
+            el.textContent += newRules;
+        }
+    }
 
     function scanIcons() {
         const icons = document.querySelectorAll('[class*="fa-"], [class^="fa"]');
+        const neededIconClasses = new Set();
+
         icons.forEach(icon => {
             const classes = Array.from(icon.classList);
+            // Load style-specific CSS files
             Object.keys(styles).forEach(prefix => {
                 if (classes.includes(prefix)) {
                     loadCSS(styles[prefix]);
                 }
             });
+            // Collect icon name classes (fa-xxx)
+            classes.forEach(cls => {
+                if (cls.startsWith('fa-') && !styles[cls] && !injectedIcons.has(cls)) {
+                    neededIconClasses.add(cls);
+                }
+            });
         });
+
+        if (neededIconClasses.size > 0) {
+            loadIconMap().then(() => injectIconRules(neededIconClasses));
+        }
     }
 
     if (document.readyState === 'loading') {
