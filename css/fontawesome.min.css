@@ -1,1 +1,933 @@
-.fa,.fa-brands,.fa-chisel,.fa-classic,.fa-duotone,.fa-etch,.fa-graphite,.fa-jelly,.fa-jelly-duo,.fa-jelly-fill,.fa-light,.fa-notdog,.fa-notdog-duo,.fa-regular,.fa-semibold,.fa-sharp,.fa-sharp-duotone,.fa-slab,.fa-slab-press,.fa-solid,.fa-thin,.fa-thumbprint,.fa-utility,.fa-utility-duo,.fa-utility-fill,.fa-whiteboard,.fab,.facr,.fad,.fadl,.fadr,.fadt,.faes,.fagt,.fajdr,.fajfr,.fajr,.fal,.fands,.fans,.far,.fas,.fasdl,.fasdr,.fasds,.fasdt,.fasl,.faslpr,.faslr,.fasr,.fass,.fast,.fat,.fatl,.faudsb,.faufsb,.fausb,.fawsb{--_fa-family:var( --fa-family,var(--fa-style-family,'Font Awesome 7 Pro') );-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;display:var(--fa-display,inline-block);font-family:var(--_fa-family);font-feature-settings:normal;font-style:normal;font-synthesis:none;font-variant:normal;font-weight:var(--fa-style,900);line-height:1;text-align:center;text-rendering:auto;width:var(--fa-width,1.25em)}:is( .fas,.fass,.far,.fasr,.fal,.fasl,.fat,.fast,.fad,.fadr,.fadl,.fadt,.fasds,.fasdr,.fasdl,.fasdt,.fab,.faslr,.faslpr,.fawsb,.fatl,.fans,.fands,.faes,.fagt,.fajr,.fajfr,.fajdr,.facr,.fausb,.faudsb,.faufsb,.fa-solid,.fa-semibold,.fa-regular,.fa-light,.fa-thin,.fa-brands,.fa-classic,.fa-duotone,.fa-sharp,.fa-sharp-duotone,.fa-chisel,.fa-etch,.fa-graphite,.fa-jelly,.fa-jelly-duo,.fa-jelly-fill,.fa-notdog,.fa-notdog-duo,.fa-slab,.fa-slab-press,.fa-thumbprint,.fa-utility,.fa-utility-duo,.fa-utility-fill,.fa-whiteboard,.fa ):before{content:var(--fa) / ''}@supports not (content:''/''){:is( .fas,.fass,.far,.fasr,.fal,.fasl,.fat,.fast,.fad,.fadr,.fadl,.fadt,.fasds,.fasdr,.fasdl,.fasdt,.fab,.faslr,.faslpr,.fawsb,.fatl,.fans,.fands,.faes,.fagt,.fajr,.fajfr,.fajdr,.facr,.fausb,.faudsb,.faufsb,.fa-solid,.fa-semibold,.fa-regular,.fa-light,.fa-thin,.fa-brands,.fa-classic,.fa-duotone,.fa-sharp,.fa-sharp-duotone,.fa-chisel,.fa-etch,.fa-graphite,.fa-jelly,.fa-jelly-duo,.fa-jelly-fill,.fa-notdog,.fa-notdog-duo,.fa-slab,.fa-slab-press,.fa-thumbprint,.fa-utility,.fa-utility-duo,.fa-utility-fill,.fa-whiteboard,.fa ):before{content:var(--fa)}}:is( .fad,.fa-duotone,.fadr,.fadl,.fadt,.fasds,.fa-sharp-duotone,.fasdr,.fasdl,.fasdt,.fatl,.fa-thumbprint,.fands,.fa-notdog-duo,.fajdr,.fa-jelly-duo,.faudsb,.fa-utility-duo ):after{content:var(--fa) / '';font-feature-settings:'ss01'}@supports not (content:''/''){:is( .fad,.fa-duotone,.fadr,.fadl,.fadt,.fasds,.fa-sharp-duotone,.fasdr,.fasdl,.fasdt,.fatl,.fa-thumbprint,.fands,.fa-notdog-duo,.fajdr,.fa-jelly-duo,.faudsb,.fa-utility-duo ):after{content:var(--fa)}}.fa-1x{font-size:1em}.fa-2x{font-size:2em}.fa-3x{font-size:3em}.fa-4x{font-size:4em}.fa-5x{font-size:5em}.fa-6x{font-size:6em}.fa-7x{font-size:7em}.fa-8x{font-size:8em}.fa-9x{font-size:9em}.fa-10x{font-size:10em}.fa-2xs{font-size:0.625em;line-height:0.1em;vertical-align:0.225em}.fa-xs{font-size:0.75em;line-height:0.08333em;vertical-align:0.125em}.fa-sm{font-size:0.875em;line-height:0.07143em;vertical-align:0.05357em}.fa-lg{font-size:1.25em;line-height:0.05em;vertical-align:-0.075em}.fa-xl{font-size:1.5em;line-height:0.04167em;vertical-align:-0.125em}.fa-2xl{font-size:2em;line-height:0.03125em;vertical-align:-0.1875em}.fa-width-auto{--fa-width:auto}.fa-fw,.fa-width-fixed{--fa-width:1.25em}.fa-ul{list-style-type:none;margin-inline-start:var(--fa-li-margin,2.5em);padding-inline-start:0}.fa-ul>li{position:relative}.fa-li{inset-inline-start:calc(var(--fa-li-width,2em) * -1);position:absolute;text-align:center;width:var(--fa-li-width,2em);line-height:inherit}.fa-border{border-radius:var(--fa-border-radius,0.1em);border:var(--fa-border-width,0.0625em) var(--fa-border-style,solid) var(--fa-border-color,#eee);box-sizing:var(--fa-border-box-sizing,content-box);padding:var(--fa-border-padding,0.1875em 0.25em)}.fa-pull-left,.fa-pull-start{float:inline-start;margin-inline-end:var(--fa-pull-margin,0.3em)}.fa-pull-end,.fa-pull-right{float:inline-end;margin-inline-start:var(--fa-pull-margin,0.3em)}.fa-beat{animation-name:fa-beat;animation-delay:var(--fa-animation-delay,0s);animation-direction:var(--fa-animation-direction,normal);animation-duration:var(--fa-animation-duration,1s);animation-iteration-count:var(--fa-animation-iteration-count,infinite);animation-timing-function:var(--fa-animation-timing,ease-in-out)}.fa-bounce{animation-name:fa-bounce;animation-delay:var(--fa-animation-delay,0s);animation-direction:var(--fa-animation-direction,normal);animation-duration:var(--fa-animation-duration,1s);animation-iteration-count:var(--fa-animation-iteration-count,infinite);animation-timing-function:var( --fa-animation-timing,cubic-bezier(0.28,0.84,0.42,1) )}.fa-fade{animation-name:fa-fade;animation-iteration-count:var(--fa-animation-iteration-count,infinite);animation-timing-function:var( --fa-animation-timing,cubic-bezier(0.4,0,0.6,1) )}.fa-beat-fade,.fa-fade{animation-delay:var(--fa-animation-delay,0s);animation-direction:var(--fa-animation-direction,normal);animation-duration:var(--fa-animation-duration,1s)}.fa-beat-fade{animation-name:fa-beat-fade;animation-iteration-count:var(--fa-animation-iteration-count,infinite);animation-timing-function:var( --fa-animation-timing,cubic-bezier(0.4,0,0.6,1) )}.fa-flip{animation-name:fa-flip;animation-delay:var(--fa-animation-delay,0s);animation-direction:var(--fa-animation-direction,normal);animation-duration:var(--fa-animation-duration,1s);animation-iteration-count:var(--fa-animation-iteration-count,infinite);animation-timing-function:var(--fa-animation-timing,ease-in-out)}.fa-shake{animation-name:fa-shake;animation-duration:var(--fa-animation-duration,1s);animation-iteration-count:var(--fa-animation-iteration-count,infinite);animation-timing-function:var(--fa-animation-timing,linear)}.fa-shake,.fa-spin{animation-delay:var(--fa-animation-delay,0s);animation-direction:var(--fa-animation-direction,normal)}.fa-spin{animation-name:fa-spin;animation-duration:var(--fa-animation-duration,2s);animation-iteration-count:var(--fa-animation-iteration-count,infinite);animation-timing-function:var(--fa-animation-timing,linear)}.fa-spin-reverse{--fa-animation-direction:reverse}.fa-pulse,.fa-spin-pulse{animation-name:fa-spin;animation-direction:var(--fa-animation-direction,normal);animation-duration:var(--fa-animation-duration,1s);animation-iteration-count:var(--fa-animation-iteration-count,infinite);animation-timing-function:var(--fa-animation-timing,steps(8))}@media (prefers-reduced-motion:reduce){.fa-beat,.fa-beat-fade,.fa-bounce,.fa-fade,.fa-flip,.fa-pulse,.fa-shake,.fa-spin,.fa-spin-pulse{animation:none !important;transition:none !important}}@keyframes fa-beat{0%,90%{transform:scale(1)}45%{transform:scale(var(--fa-beat-scale,1.25))}}@keyframes fa-bounce{0%{transform:scale(1) translateY(0)}10%{transform:scale( var(--fa-bounce-start-scale-x,1.1),var(--fa-bounce-start-scale-y,0.9) ) translateY(0)}30%{transform:scale( var(--fa-bounce-jump-scale-x,0.9),var(--fa-bounce-jump-scale-y,1.1) ) translateY(var(--fa-bounce-height,-0.5em))}50%{transform:scale( var(--fa-bounce-land-scale-x,1.05),var(--fa-bounce-land-scale-y,0.95) ) translateY(0)}57%{transform:scale(1) translateY(var(--fa-bounce-rebound,-0.125em))}64%{transform:scale(1) translateY(0)}to{transform:scale(1) translateY(0)}}@keyframes fa-fade{50%{opacity:var(--fa-fade-opacity,0.4)}}@keyframes fa-beat-fade{0%,to{opacity:var(--fa-beat-fade-opacity,0.4);transform:scale(1)}50%{opacity:1;transform:scale(var(--fa-beat-fade-scale,1.125))}}@keyframes fa-flip{50%{transform:rotate3d( var(--fa-flip-x,0),var(--fa-flip-y,1),var(--fa-flip-z,0),var(--fa-flip-angle,-180deg) )}}@keyframes fa-shake{0%{transform:rotate(-15deg)}4%{transform:rotate(15deg)}8%,24%{transform:rotate(-18deg)}12%,28%{transform:rotate(18deg)}16%{transform:rotate(-22deg)}20%{transform:rotate(22deg)}32%{transform:rotate(-12deg)}36%{transform:rotate(12deg)}40%,to{transform:rotate(0deg)}}@keyframes fa-spin{0%{transform:rotate(0deg)}to{transform:rotate(1turn)}}.fa-rotate-90{transform:rotate(90deg)}.fa-rotate-180{transform:rotate(180deg)}.fa-rotate-270{transform:rotate(270deg)}.fa-flip-horizontal{transform:scaleX(-1)}.fa-flip-vertical{transform:scaleY(-1)}.fa-flip-both,.fa-flip-horizontal.fa-flip-vertical{transform:scale(-1)}.fa-rotate-by{transform:rotate(var(--fa-rotate-angle,0))}.fa-stack{display:inline-block;height:2em;line-height:2em;position:relative;vertical-align:middle;width:2.5em}.fa-stack-1x,.fa-stack-2x{--fa-width:100%;inset:0;position:absolute;text-align:center;width:var(--fa-width);z-index:var(--fa-stack-z-index,auto)}.fa-stack-1x{line-height:inherit}.fa-stack-2x{font-size:2em}.fa-inverse{color:var(--fa-inverse,#fff)}.fa-at{--fa:'\@'}.fa-add,.fa-plus{--fa:'\+'}.fa-arrow-left{--fa:'\f060'}.fa-arrow-right{--fa:'\f061'}.fa-arrow-left-long,.fa-long-arrow-left{--fa:'\f177'}.fa-arrow-right-long,.fa-long-arrow-right{--fa:'\f178'}.fa-arrow-right-long,.fa-long-arrow-right{--fa:'\f178'}.fa-long-arrow-alt-right,.fa-right-long{--fa:'\f30b'}.fa-arrow-right-from-bracket,.fa-sign-out{--fa:'\f08b'}.fa-arrow-right-to-bracket,.fa-sign-in{--fa:'\f090'}.fa-right-from-bracket,.fa-sign-out-alt{--fa:'\f2f5'}.fa-right-to-bracket,.fa-sign-in-alt{--fa:'\f2f6'}.fa-bars,.fa-navicon{--fa:'\f0c9'}.fa-bars-staggered,.fa-reorder,.fa-stream{--fa:'\f550'}.fa-bell{--fa:'\f0f3'}.fa-book{--fa:'\f02d'}.fa-book-open{--fa:'\f518'}.fa-building{--fa:'\f1ad'}.fa-calendar{--fa:'\f133'}.fa-calendar-alt,.fa-calendar-days{--fa:'\f073'}.fa-camera,.fa-camera-alt{--fa:'\f030'}.fa-bar-chart,.fa-chart-bar{--fa:'\f080'}.fa-chart-line,.fa-line-chart{--fa:'\f201'}.fa-check{--fa:'\f00c'}.fa-chevron-down{--fa:'\f078'}.fa-chevron-left{--fa:'\f053'}.fa-chevron-right{--fa:'\f054'}.fa-chevron-up{--fa:'\f077'}.fa-check-circle,.fa-circle-check{--fa:'\f058'}.fa-circle-exclamation,.fa-exclamation-circle{--fa:'\f06a'}.fa-circle-info,.fa-info-circle{--fa:'\f05a'}.fa-circle-play,.fa-play-circle{--fa:'\f144'}.fa-circle-plus,.fa-plus-circle{--fa:'\f055'}.fa-circle-xmark,.fa-times-circle,.fa-xmark-circle{--fa:'\f057'}.fa-clock-rotate-left,.fa-history{--fa:'\f1da'}.fa-cloud-arrow-down,.fa-cloud-download,.fa-cloud-download-alt{--fa:'\f0ed'}.fa-cloud-arrow-up,.fa-cloud-upload,.fa-cloud-upload-alt{--fa:'\f0ee'}.fa-database{--fa:'\f1c0'}.fa-desktop,.fa-desktop-alt{--fa:'\f390'}.fa-download{--fa:'\f019'}.fa-envelope{--fa:'\f0e0'}.fa-eye{--fa:'\f06e'}.fa-eye-slash{--fa:'\f070'}.fa-file{--fa:'\f15b'}.fa-file-circle-check{--fa:'\e5a0'}.fa-file-alt,.fa-file-lines,.fa-file-text{--fa:'\f15c'}.fa-file-pdf{--fa:'\f1c1'}.fa-floppy-disk,.fa-save{--fa:'\f0c7'}.fa-folder,.fa-folder-blank{--fa:'\f07b'}.fa-folder-open{--fa:'\f07c'}.fa-cog,.fa-gear{--fa:'\f013'}.fa-globe{--fa:'\f0ac'}.fa-grid-2{--fa:'\e196'}.fa-handshake,.fa-handshake-alt,.fa-handshake-simple{--fa:'\f2b5'}.fa-home,.fa-home-alt,.fa-home-lg-alt,.fa-house{--fa:'\f015'}.fa-image{--fa:'\f03e'}.fa-inbox{--fa:'\f01c'}.fa-layer-group{--fa:'\f5fd'}.fa-left-from-bracket{--fa:'\e66c'}.fa-chain,.fa-link{--fa:'\f0c1'}.fa-location-dot,.fa-map-marker-alt{--fa:'\f3c5'}.fa-lock{--fa:'\f023'}.fa-lock-alt,.fa-lock-keyhole{--fa:'\f30d'}.fa-lock-check{--fa:'\e59f'}.fa-magnifying-glass,.fa-search{--fa:'\f002'}.fa-megaphone{--fa:'\f675'}.fa-newspaper{--fa:'\f1ea'}.fa-paper-plane{--fa:'\f1d8'}.fa-paperclip{--fa:'\f0c6'}.fa-pencil,.fa-pencil-alt{--fa:'\f303'}.fa-phone{--fa:'\f095'}.fa-power-off{--fa:'\f011'}.fa-rotate,.fa-sync-alt{--fa:'\f2f1'}.fa-server{--fa:'\f233'}.fa-share-alt,.fa-share-nodes{--fa:'\f1e0'}.fa-shield-alt,.fa-shield-halved{--fa:'\f3ed'}.fa-sparkles{--fa:'\f890'}.fa-star{--fa:'\f005'}.fa-star-half{--fa:'\f089'}.fa-star-half-alt,.fa-star-half-stroke{--fa:'\f5c0'}.fa-trash{--fa:'\f1f8'}.fa-exclamation-triangle,.fa-triangle-exclamation,.fa-warning{--fa:'\f071'}.fa-upload{--fa:'\f093'}.fa-user,.fa-user-alt,.fa-user-large{--fa:'\f007'}.fa-user-cog,.fa-user-gear{--fa:'\f4fe'}.fa-user-friends,.fa-user-group{--fa:'\f500'}.fa-users{--fa:'\f0c0'}.fa-magic-wand-sparkles,.fa-wand-magic-sparkles{--fa:'\e2ca'}.fa-close,.fa-multiply,.fa-remove,.fa-times,.fa-xmark{--fa:'\f00d'}.fa-arrow-right-long,.fa-long-arrow-right{--fa:'\f178'}.fa-balance-scale,.fa-scale-balanced{--fa:'\f24e'}.fa-font-awesome,.fa-font-awesome-flag,.fa-font-awesome-logo-full{--fa:'\f2b4'}
+.fa,
+.fa-brands,
+.fa-chisel,
+.fa-classic,
+.fa-duotone,
+.fa-etch,
+.fa-graphite,
+.fa-jelly,
+.fa-jelly-duo,
+.fa-jelly-fill,
+.fa-light,
+.fa-notdog,
+.fa-notdog-duo,
+.fa-regular,
+.fa-semibold,
+.fa-sharp,
+.fa-sharp-duotone,
+.fa-slab,
+.fa-slab-press,
+.fa-solid,
+.fa-thin,
+.fa-thumbprint,
+.fa-utility,
+.fa-utility-duo,
+.fa-utility-fill,
+.fa-whiteboard,
+.fab,
+.facr,
+.fad,
+.fadl,
+.fadr,
+.fadt,
+.faes,
+.fagt,
+.fajdr,
+.fajfr,
+.fajr,
+.fal,
+.fands,
+.fans,
+.far,
+.fas,
+.fasdl,
+.fasdr,
+.fasds,
+.fasdt,
+.fasl,
+.faslpr,
+.faslr,
+.fasr,
+.fass,
+.fast,
+.fat,
+.fatl,
+.faudsb,
+.faufsb,
+.fausb,
+.fawsb {
+  --_fa-family: var(--fa-family, var(--fa-style-family, "Font Awesome 7 Pro"));
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: var(--fa-display, inline-block);
+  font-family: var(--_fa-family);
+  font-feature-settings: normal;
+  font-style: normal;
+  font-synthesis: none;
+  font-variant: normal;
+  font-weight: var(--fa-style, 900);
+  line-height: 1;
+  text-align: center;
+  text-rendering: auto;
+  width: var(--fa-width, 1.25em);
+}
+:is(
+  .fas,
+  .fass,
+  .far,
+  .fasr,
+  .fal,
+  .fasl,
+  .fat,
+  .fast,
+  .fad,
+  .fadr,
+  .fadl,
+  .fadt,
+  .fasds,
+  .fasdr,
+  .fasdl,
+  .fasdt,
+  .fab,
+  .faslr,
+  .faslpr,
+  .fawsb,
+  .fatl,
+  .fans,
+  .fands,
+  .faes,
+  .fagt,
+  .fajr,
+  .fajfr,
+  .fajdr,
+  .facr,
+  .fausb,
+  .faudsb,
+  .faufsb,
+  .fa-solid,
+  .fa-semibold,
+  .fa-regular,
+  .fa-light,
+  .fa-thin,
+  .fa-brands,
+  .fa-classic,
+  .fa-duotone,
+  .fa-sharp,
+  .fa-sharp-duotone,
+  .fa-chisel,
+  .fa-etch,
+  .fa-graphite,
+  .fa-jelly,
+  .fa-jelly-duo,
+  .fa-jelly-fill,
+  .fa-notdog,
+  .fa-notdog-duo,
+  .fa-slab,
+  .fa-slab-press,
+  .fa-thumbprint,
+  .fa-utility,
+  .fa-utility-duo,
+  .fa-utility-fill,
+  .fa-whiteboard,
+  .fa
+):before {
+  content: var(--fa) / "";
+}
+@supports not (content: ""/"") {
+  :is(
+    .fas,
+    .fass,
+    .far,
+    .fasr,
+    .fal,
+    .fasl,
+    .fat,
+    .fast,
+    .fad,
+    .fadr,
+    .fadl,
+    .fadt,
+    .fasds,
+    .fasdr,
+    .fasdl,
+    .fasdt,
+    .fab,
+    .faslr,
+    .faslpr,
+    .fawsb,
+    .fatl,
+    .fans,
+    .fands,
+    .faes,
+    .fagt,
+    .fajr,
+    .fajfr,
+    .fajdr,
+    .facr,
+    .fausb,
+    .faudsb,
+    .faufsb,
+    .fa-solid,
+    .fa-semibold,
+    .fa-regular,
+    .fa-light,
+    .fa-thin,
+    .fa-brands,
+    .fa-classic,
+    .fa-duotone,
+    .fa-sharp,
+    .fa-sharp-duotone,
+    .fa-chisel,
+    .fa-etch,
+    .fa-graphite,
+    .fa-jelly,
+    .fa-jelly-duo,
+    .fa-jelly-fill,
+    .fa-notdog,
+    .fa-notdog-duo,
+    .fa-slab,
+    .fa-slab-press,
+    .fa-thumbprint,
+    .fa-utility,
+    .fa-utility-duo,
+    .fa-utility-fill,
+    .fa-whiteboard,
+    .fa
+  ):before {
+    content: var(--fa);
+  }
+}
+:is(
+  .fad,
+  .fa-duotone,
+  .fadr,
+  .fadl,
+  .fadt,
+  .fasds,
+  .fa-sharp-duotone,
+  .fasdr,
+  .fasdl,
+  .fasdt,
+  .fatl,
+  .fa-thumbprint,
+  .fands,
+  .fa-notdog-duo,
+  .fajdr,
+  .fa-jelly-duo,
+  .faudsb,
+  .fa-utility-duo
+):after {
+  content: var(--fa) / "";
+  font-feature-settings: "ss01";
+}
+@supports not (content: ""/"") {
+  :is(
+    .fad,
+    .fa-duotone,
+    .fadr,
+    .fadl,
+    .fadt,
+    .fasds,
+    .fa-sharp-duotone,
+    .fasdr,
+    .fasdl,
+    .fasdt,
+    .fatl,
+    .fa-thumbprint,
+    .fands,
+    .fa-notdog-duo,
+    .fajdr,
+    .fa-jelly-duo,
+    .faudsb,
+    .fa-utility-duo
+  ):after {
+    content: var(--fa);
+  }
+}
+.fa-1x {
+  font-size: 1em;
+}
+.fa-2x {
+  font-size: 2em;
+}
+.fa-3x {
+  font-size: 3em;
+}
+.fa-4x {
+  font-size: 4em;
+}
+.fa-5x {
+  font-size: 5em;
+}
+.fa-6x {
+  font-size: 6em;
+}
+.fa-7x {
+  font-size: 7em;
+}
+.fa-8x {
+  font-size: 8em;
+}
+.fa-9x {
+  font-size: 9em;
+}
+.fa-10x {
+  font-size: 10em;
+}
+.fa-2xs {
+  font-size: 0.625em;
+  line-height: 0.1em;
+  vertical-align: 0.225em;
+}
+.fa-xs {
+  font-size: 0.75em;
+  line-height: 0.08333em;
+  vertical-align: 0.125em;
+}
+.fa-sm {
+  font-size: 0.875em;
+  line-height: 0.07143em;
+  vertical-align: 0.05357em;
+}
+.fa-lg {
+  font-size: 1.25em;
+  line-height: 0.05em;
+  vertical-align: -0.075em;
+}
+.fa-xl {
+  font-size: 1.5em;
+  line-height: 0.04167em;
+  vertical-align: -0.125em;
+}
+.fa-2xl {
+  font-size: 2em;
+  line-height: 0.03125em;
+  vertical-align: -0.1875em;
+}
+.fa-width-auto {
+  --fa-width: auto;
+}
+.fa-fw,
+.fa-width-fixed {
+  --fa-width: 1.25em;
+}
+.fa-ul {
+  list-style-type: none;
+  margin-inline-start: var(--fa-li-margin, 2.5em);
+  padding-inline-start: 0;
+}
+.fa-ul > li {
+  position: relative;
+}
+.fa-li {
+  inset-inline-start: calc(var(--fa-li-width, 2em) * -1);
+  position: absolute;
+  text-align: center;
+  width: var(--fa-li-width, 2em);
+  line-height: inherit;
+}
+.fa-border {
+  border-radius: var(--fa-border-radius, 0.1em);
+  border: var(--fa-border-width, 0.0625em) var(--fa-border-style, solid)
+    var(--fa-border-color, #eee);
+  box-sizing: var(--fa-border-box-sizing, content-box);
+  padding: var(--fa-border-padding, 0.1875em 0.25em);
+}
+.fa-pull-left,
+.fa-pull-start {
+  float: inline-start;
+  margin-inline-end: var(--fa-pull-margin, 0.3em);
+}
+.fa-pull-end,
+.fa-pull-right {
+  float: inline-end;
+  margin-inline-start: var(--fa-pull-margin, 0.3em);
+}
+.fa-beat {
+  animation-name: fa-beat;
+  animation-delay: var(--fa-animation-delay, 0s);
+  animation-direction: var(--fa-animation-direction, normal);
+  animation-duration: var(--fa-animation-duration, 1s);
+  animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+  animation-timing-function: var(--fa-animation-timing, ease-in-out);
+}
+.fa-bounce {
+  animation-name: fa-bounce;
+  animation-delay: var(--fa-animation-delay, 0s);
+  animation-direction: var(--fa-animation-direction, normal);
+  animation-duration: var(--fa-animation-duration, 1s);
+  animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+  animation-timing-function: var(
+    --fa-animation-timing,
+    cubic-bezier(0.28, 0.84, 0.42, 1)
+  );
+}
+.fa-fade {
+  animation-name: fa-fade;
+  animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+  animation-timing-function: var(
+    --fa-animation-timing,
+    cubic-bezier(0.4, 0, 0.6, 1)
+  );
+}
+.fa-beat-fade,
+.fa-fade {
+  animation-delay: var(--fa-animation-delay, 0s);
+  animation-direction: var(--fa-animation-direction, normal);
+  animation-duration: var(--fa-animation-duration, 1s);
+}
+.fa-beat-fade {
+  animation-name: fa-beat-fade;
+  animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+  animation-timing-function: var(
+    --fa-animation-timing,
+    cubic-bezier(0.4, 0, 0.6, 1)
+  );
+}
+.fa-flip {
+  animation-name: fa-flip;
+  animation-delay: var(--fa-animation-delay, 0s);
+  animation-direction: var(--fa-animation-direction, normal);
+  animation-duration: var(--fa-animation-duration, 1s);
+  animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+  animation-timing-function: var(--fa-animation-timing, ease-in-out);
+}
+.fa-shake {
+  animation-name: fa-shake;
+  animation-duration: var(--fa-animation-duration, 1s);
+  animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+  animation-timing-function: var(--fa-animation-timing, linear);
+}
+.fa-shake,
+.fa-spin {
+  animation-delay: var(--fa-animation-delay, 0s);
+  animation-direction: var(--fa-animation-direction, normal);
+}
+.fa-spin {
+  animation-name: fa-spin;
+  animation-duration: var(--fa-animation-duration, 2s);
+  animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+  animation-timing-function: var(--fa-animation-timing, linear);
+}
+.fa-spin-reverse {
+  --fa-animation-direction: reverse;
+}
+.fa-pulse,
+.fa-spin-pulse {
+  animation-name: fa-spin;
+  animation-direction: var(--fa-animation-direction, normal);
+  animation-duration: var(--fa-animation-duration, 1s);
+  animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+  animation-timing-function: var(--fa-animation-timing, steps(8));
+}
+@media (prefers-reduced-motion: reduce) {
+  .fa-beat,
+  .fa-beat-fade,
+  .fa-bounce,
+  .fa-fade,
+  .fa-flip,
+  .fa-pulse,
+  .fa-shake,
+  .fa-spin,
+  .fa-spin-pulse {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+@keyframes fa-beat {
+  0%,
+  90% {
+    transform: scale(1);
+  }
+  45% {
+    transform: scale(var(--fa-beat-scale, 1.25));
+  }
+}
+@keyframes fa-bounce {
+  0% {
+    transform: scale(1) translateY(0);
+  }
+  10% {
+    transform: scale(
+        var(--fa-bounce-start-scale-x, 1.1),
+        var(--fa-bounce-start-scale-y, 0.9)
+      )
+      translateY(0);
+  }
+  30% {
+    transform: scale(
+        var(--fa-bounce-jump-scale-x, 0.9),
+        var(--fa-bounce-jump-scale-y, 1.1)
+      )
+      translateY(var(--fa-bounce-height, -0.5em));
+  }
+  50% {
+    transform: scale(
+        var(--fa-bounce-land-scale-x, 1.05),
+        var(--fa-bounce-land-scale-y, 0.95)
+      )
+      translateY(0);
+  }
+  57% {
+    transform: scale(1) translateY(var(--fa-bounce-rebound, -0.125em));
+  }
+  64% {
+    transform: scale(1) translateY(0);
+  }
+  to {
+    transform: scale(1) translateY(0);
+  }
+}
+@keyframes fa-fade {
+  50% {
+    opacity: var(--fa-fade-opacity, 0.4);
+  }
+}
+@keyframes fa-beat-fade {
+  0%,
+  to {
+    opacity: var(--fa-beat-fade-opacity, 0.4);
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(var(--fa-beat-fade-scale, 1.125));
+  }
+}
+@keyframes fa-flip {
+  50% {
+    transform: rotate3d(
+      var(--fa-flip-x, 0),
+      var(--fa-flip-y, 1),
+      var(--fa-flip-z, 0),
+      var(--fa-flip-angle, -180deg)
+    );
+  }
+}
+@keyframes fa-shake {
+  0% {
+    transform: rotate(-15deg);
+  }
+  4% {
+    transform: rotate(15deg);
+  }
+  8%,
+  24% {
+    transform: rotate(-18deg);
+  }
+  12%,
+  28% {
+    transform: rotate(18deg);
+  }
+  16% {
+    transform: rotate(-22deg);
+  }
+  20% {
+    transform: rotate(22deg);
+  }
+  32% {
+    transform: rotate(-12deg);
+  }
+  36% {
+    transform: rotate(12deg);
+  }
+  40%,
+  to {
+    transform: rotate(0deg);
+  }
+}
+@keyframes fa-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(1turn);
+  }
+}
+.fa-rotate-90 {
+  transform: rotate(90deg);
+}
+.fa-rotate-180 {
+  transform: rotate(180deg);
+}
+.fa-rotate-270 {
+  transform: rotate(270deg);
+}
+.fa-flip-horizontal {
+  transform: scaleX(-1);
+}
+.fa-flip-vertical {
+  transform: scaleY(-1);
+}
+.fa-flip-both,
+.fa-flip-horizontal.fa-flip-vertical {
+  transform: scale(-1);
+}
+.fa-rotate-by {
+  transform: rotate(var(--fa-rotate-angle, 0));
+}
+.fa-stack {
+  display: inline-block;
+  height: 2em;
+  line-height: 2em;
+  position: relative;
+  vertical-align: middle;
+  width: 2.5em;
+}
+.fa-stack-1x,
+.fa-stack-2x {
+  --fa-width: 100%;
+  inset: 0;
+  position: absolute;
+  text-align: center;
+  width: var(--fa-width);
+  z-index: var(--fa-stack-z-index, auto);
+}
+.fa-stack-1x {
+  line-height: inherit;
+}
+.fa-stack-2x {
+  font-size: 2em;
+}
+.fa-inverse {
+  color: var(--fa-inverse, #fff);
+}
+.fa-at {
+  --fa: "\@";
+}
+.fa-add,
+.fa-plus {
+  --fa: "\+";
+}
+.fa-arrow-left {
+  --fa: "\f060";
+}
+.fa-arrow-right {
+  --fa: "\f061";
+}
+.fa-arrow-left-long,
+.fa-long-arrow-left {
+  --fa: "\f177";
+}
+.fa-arrow-right-long,
+.fa-long-arrow-right {
+  --fa: "\f178";
+}
+.fa-arrow-right-long,
+.fa-long-arrow-right {
+  --fa: "\f178";
+}
+.fa-long-arrow-alt-right,
+.fa-right-long {
+  --fa: "\f30b";
+}
+.fa-arrow-right-from-bracket,
+.fa-sign-out {
+  --fa: "\f08b";
+}
+.fa-arrow-right-to-bracket,
+.fa-sign-in {
+  --fa: "\f090";
+}
+.fa-right-from-bracket,
+.fa-sign-out-alt {
+  --fa: "\f2f5";
+}
+.fa-right-to-bracket,
+.fa-sign-in-alt {
+  --fa: "\f2f6";
+}
+.fa-bars,
+.fa-navicon {
+  --fa: "\f0c9";
+}
+.fa-bars-staggered,
+.fa-reorder,
+.fa-stream {
+  --fa: "\f550";
+}
+.fa-bell {
+  --fa: "\f0f3";
+}
+.fa-book {
+  --fa: "\f02d";
+}
+.fa-book-open {
+  --fa: "\f518";
+}
+.fa-building {
+  --fa: "\f1ad";
+}
+.fa-calendar {
+  --fa: "\f133";
+}
+.fa-calendar-alt,
+.fa-calendar-days {
+  --fa: "\f073";
+}
+.fa-camera,
+.fa-camera-alt {
+  --fa: "\f030";
+}
+.fa-bar-chart,
+.fa-chart-bar {
+  --fa: "\f080";
+}
+.fa-chart-line,
+.fa-line-chart {
+  --fa: "\f201";
+}
+.fa-check {
+  --fa: "\f00c";
+}
+.fa-chevron-down {
+  --fa: "\f078";
+}
+.fa-chevron-left {
+  --fa: "\f053";
+}
+.fa-chevron-right {
+  --fa: "\f054";
+}
+.fa-chevron-up {
+  --fa: "\f077";
+}
+.fa-check-circle,
+.fa-circle-check {
+  --fa: "\f058";
+}
+.fa-circle-exclamation,
+.fa-exclamation-circle {
+  --fa: "\f06a";
+}
+.fa-circle-info,
+.fa-info-circle {
+  --fa: "\f05a";
+}
+.fa-circle-play,
+.fa-play-circle {
+  --fa: "\f144";
+}
+.fa-circle-plus,
+.fa-plus-circle {
+  --fa: "\f055";
+}
+.fa-circle-xmark,
+.fa-times-circle,
+.fa-xmark-circle {
+  --fa: "\f057";
+}
+.fa-clock-rotate-left,
+.fa-history {
+  --fa: "\f1da";
+}
+.fa-cloud-arrow-down,
+.fa-cloud-download,
+.fa-cloud-download-alt {
+  --fa: "\f0ed";
+}
+.fa-cloud-arrow-up,
+.fa-cloud-upload,
+.fa-cloud-upload-alt {
+  --fa: "\f0ee";
+}
+.fa-database {
+  --fa: "\f1c0";
+}
+.fa-desktop,
+.fa-desktop-alt {
+  --fa: "\f390";
+}
+.fa-download {
+  --fa: "\f019";
+}
+.fa-envelope {
+  --fa: "\f0e0";
+}
+.fa-eye {
+  --fa: "\f06e";
+}
+.fa-eye-slash {
+  --fa: "\f070";
+}
+.fa-file {
+  --fa: "\f15b";
+}
+.fa-file-circle-check {
+  --fa: "\e5a0";
+}
+.fa-file-alt,
+.fa-file-lines,
+.fa-file-text {
+  --fa: "\f15c";
+}
+.fa-file-pdf {
+  --fa: "\f1c1";
+}
+.fa-floppy-disk,
+.fa-save {
+  --fa: "\f0c7";
+}
+.fa-folder,
+.fa-folder-blank {
+  --fa: "\f07b";
+}
+.fa-folder-open {
+  --fa: "\f07c";
+}
+.fa-cog,
+.fa-gear {
+  --fa: "\f013";
+}
+.fa-globe {
+  --fa: "\f0ac";
+}
+.fa-grid-2 {
+  --fa: "\e196";
+}
+.fa-handshake,
+.fa-handshake-alt,
+.fa-handshake-simple {
+  --fa: "\f2b5";
+}
+.fa-home,
+.fa-home-alt,
+.fa-home-lg-alt,
+.fa-house {
+  --fa: "\f015";
+}
+.fa-image {
+  --fa: "\f03e";
+}
+.fa-inbox {
+  --fa: "\f01c";
+}
+.fa-layer-group {
+  --fa: "\f5fd";
+}
+.fa-left-from-bracket {
+  --fa: "\e66c";
+}
+.fa-chain,
+.fa-link {
+  --fa: "\f0c1";
+}
+.fa-location-dot,
+.fa-map-marker-alt {
+  --fa: "\f3c5";
+}
+.fa-lock {
+  --fa: "\f023";
+}
+.fa-lock-alt,
+.fa-lock-keyhole {
+  --fa: "\f30d";
+}
+.fa-lock-check {
+  --fa: "\e59f";
+}
+.fa-magnifying-glass,
+.fa-search {
+  --fa: "\f002";
+}
+.fa-megaphone {
+  --fa: "\f675";
+}
+.fa-newspaper {
+  --fa: "\f1ea";
+}
+.fa-paper-plane {
+  --fa: "\f1d8";
+}
+.fa-paperclip {
+  --fa: "\f0c6";
+}
+.fa-pencil,
+.fa-pencil-alt {
+  --fa: "\f303";
+}
+.fa-phone {
+  --fa: "\f095";
+}
+.fa-power-off {
+  --fa: "\f011";
+}
+.fa-rotate,
+.fa-sync-alt {
+  --fa: "\f2f1";
+}
+.fa-server {
+  --fa: "\f233";
+}
+.fa-share-alt,
+.fa-share-nodes {
+  --fa: "\f1e0";
+}
+.fa-shield-alt,
+.fa-shield-halved {
+  --fa: "\f3ed";
+}
+.fa-sparkles {
+  --fa: "\f890";
+}
+.fa-star {
+  --fa: "\f005";
+}
+.fa-star-half {
+  --fa: "\f089";
+}
+.fa-star-half-alt,
+.fa-star-half-stroke {
+  --fa: "\f5c0";
+}
+.fa-trash {
+  --fa: "\f1f8";
+}
+.fa-exclamation-triangle,
+.fa-triangle-exclamation,
+.fa-warning {
+  --fa: "\f071";
+}
+.fa-upload {
+  --fa: "\f093";
+}
+.fa-user,
+.fa-user-alt,
+.fa-user-large {
+  --fa: "\f007";
+}
+.fa-user-cog,
+.fa-user-gear {
+  --fa: "\f4fe";
+}
+.fa-user-friends,
+.fa-user-group {
+  --fa: "\f500";
+}
+.fa-users {
+  --fa: "\f0c0";
+}
+.fa-magic-wand-sparkles,
+.fa-wand-magic-sparkles {
+  --fa: "\e2ca";
+}
+.fa-close,
+.fa-multiply,
+.fa-remove,
+.fa-times,
+.fa-xmark {
+  --fa: "\f00d";
+}
+.fa-arrow-right-long,
+.fa-long-arrow-right {
+  --fa: "\f178";
+}
+.fa-balance-scale,
+.fa-scale-balanced {
+  --fa: "\f24e";
+}
+.fa-font-awesome,
+.fa-font-awesome-flag,
+.fa-font-awesome-logo-full {
+  --fa: "\f2b4";
+}

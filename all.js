@@ -49,7 +49,6 @@
         }
     }
 
-    loadCSS('fonts.css');
     loadCSS('fontawesome.min.css');
 
     function scanIcons() {
@@ -71,9 +70,18 @@
     }
 
     let debounceTimer;
-    const observer = new MutationObserver(() => {
-        clearTimeout(debounceTimer);
-        debounceTimer = setTimeout(scanIcons, 100);
+    const observer = new MutationObserver((mutations) => {
+        let hasNewNodes = false;
+        for (let i = 0; i < mutations.length; i++) {
+            if (mutations[i].addedNodes.length > 0) {
+                hasNewNodes = true;
+                break;
+            }
+        }
+        if (hasNewNodes) {
+            clearTimeout(debounceTimer);
+            debounceTimer = setTimeout(scanIcons, 300); // Debounce dinaikkan ke 300ms untuk performa
+        }
     });
     observer.observe(document.documentElement, { childList: true, subtree: true });
 })();
