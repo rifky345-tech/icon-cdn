@@ -42,14 +42,20 @@
         const href = baseUrl + file;
         if (!document.querySelector(`link[href="${href}"]`)) {
             const link = document.createElement('link');
-            link.rel = 'stylesheet';
+            link.rel = 'preload';
+            link.as = 'style';
             link.href = href;
+            link.onload = function() {
+                this.onload = null;
+                this.rel = 'stylesheet';
+            };
             document.head.appendChild(link);
             loaded.add(file);
         }
     }
 
-    loadCSS('fontawesome.min.css');
+    // Mengembalikan ke fontawesome.css karena versi minified tidak memiliki unicode ikon
+    loadCSS('fontawesome.css');
 
     function scanIcons() {
         const icons = document.querySelectorAll('[class*="fa-"], [class^="fa"]');
