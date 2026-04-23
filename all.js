@@ -42,19 +42,13 @@
         const href = baseUrl + file;
         if (!document.querySelector(`link[href="${href}"]`)) {
             const link = document.createElement('link');
-            link.rel = 'preload';
-            link.as = 'style';
+            link.rel = 'stylesheet';
             link.href = href;
-            link.onload = function() {
-                this.onload = null;
-                this.rel = 'stylesheet';
-            };
             document.head.appendChild(link);
             loaded.add(file);
         }
     }
 
-    // Mengembalikan ke fontawesome.css karena versi minified tidak memiliki unicode ikon
     loadCSS('fontawesome.css');
 
     function scanIcons() {
@@ -86,7 +80,7 @@
         }
         if (hasNewNodes) {
             clearTimeout(debounceTimer);
-            debounceTimer = setTimeout(scanIcons, 300); // Debounce dinaikkan ke 300ms untuk performa
+            debounceTimer = setTimeout(scanIcons, 300); 
         }
     });
     observer.observe(document.documentElement, { childList: true, subtree: true });
