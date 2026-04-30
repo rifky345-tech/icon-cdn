@@ -1,98 +1,80 @@
 #!/usr/bin/env python3
 """
-Font Subsetting Script untuk Icon CDN
-Memangkas ukuran font dengan hanya menyertakan icon yang benar-benar dipakai
+Font Subsetting Script v3 - Fixed compatibility
+Pakai TTFont dan Subsetter langsung dari fontTools
 """
 
 import os
-import subprocess
-import json
 from pathlib import Path
+from fontTools.ttLib import TTFont
+from fontTools.subset import Subsetter
 
-# List icon yang dipakai (dari scan index.html)
+# Icon yang dipakai
 ICONS_TO_SUBSET = {
-    # Utility Fill (fa-utility-fill-semibold-600.woff2)
     'fa-utility-fill': {
         'font_file': 'fa-utility-fill-semibold-600.woff2',
         'icons': ['fa-arrow-down', 'fa-envelope']
     },
-    # Utility Duo (fa-utility-duo-semibold-600.woff2)
     'fa-utility-duo': {
         'font_file': 'fa-utility-duo-semibold-600.woff2',
         'icons': ['fa-angle-left', 'fa-angle-right', 'fa-arrow-right']
     },
-    # Brands (fa-brands-400.woff2)
     'fa-brands': {
         'font_file': 'fa-brands-400.woff2',
         'icons': ['fa-instagram', 'fa-github', 'fa-linkedin']
     }
 }
 
-# Unicode mapping dari icon-map.js
+# Unicode mapping
 ICON_UNICODE_MAP = {
-    'fa-arrow-down': '\\f063',
-    'fa-angle-left': '\\f104',
-    'fa-angle-right': '\\f105',
-    'fa-arrow-right': '\\f061',
-    'fa-envelope': '\\f0e0',
-    'fa-instagram': '\\f16d',
-    'fa-github': '\\f09b',
-    'fa-linkedin': '\\f08c',
+    'fa-arrow-down': 0xf063,
+    'fa-angle-left': 0xf104,
+    'fa-angle-right': 0xf105,
+    'fa-arrow-right': 0xf061,
+    'fa-envelope': 0xf0e0,
+    'fa-instagram': 0xf16d,
+    'fa-github': 0xf09b,
+    'fa-linkedin': 0xf08c,
 }
 
-def get_unicode_codepoints(icon_names):
-    """Convert icon names to unicode codepoints untuk fonttools"""
-    codepoints = []
-    for icon in icon_names:
-        if icon in ICON_UNICODE_MAP:
-            unicode_str = ICON_UNICODE_MAP[icon]
-            # Convert '\\f063' to actual codepoint 0xf063
-            codepoint = int(unicode_str.replace('\\', '0x'), 16)
-            codepoints.append(f'U+{codepoint:04X}')
-    return ','.join(codepoints)
-
-def subset_font(input_font, output_font, codepoints):
-    """Run pyftsubset untuk subset font file"""
+def subset_font_direct(input_font_path, output_font_path, codepoints):
+    """
+    Subset font using fontTools TTFont + Subsetter
+    codepoints: list of unicode codepoints [0xf063, 0xf104, ...]
+    """
     try:
-        cmd = [
-            'pyftsubset',
-            input_font,
-            f'--unicodes={codepoints}',
-            f'--output-file={output_font}',
-            '--flavor=woff2',
-            '--with-zopfli'
-        ]
+        print(f"  Loading font: {input_font_path}")
         
-        print(f"  Running: {' '.join(cmd)}")
-        result = subprocess.run(cmd, capture_output=True, text=True)
+        # Load font using TTFont
+        font = TTFont(input_font_path)
         
-        if result.returncode != 0:
-            print(f"  ⚠️  Error: {result.stderr}")
-            return False
+        # Create subsetter dengan codepoints yang diinginkan
+        subsetter = Subsetter()
+        subsetter.populate(unicodes=codepoints)
         
-        # Check file size
-        if os.path.exists(output_font):
-            size_kb = os.path.getsize(output_font) / 1024
+        # Apply subset
+        subsetter.subset(font)
+        
+        # Save subset font as WOFF2
+        print(f"  Saving to: {output_font_path}")
+        font.save(output_font_path)
+        
+        if os.path.exists(output_font_path):
+            size_kb = os.path.getsize(output_font_path) / 1024
             print(f"  ✅ Success! Size: {size_kb:.2f} KB")
-            return True
-        return False
+            return True, size_kb
+        return False, 0
+        
     except Exception as e:
-        print(f"  ❌ Exception: {e}")
-        return False
+        print(f"  ❌ Error: {e}")
+        import traceback
+        traceback.print_exc()
+        return False, 0
 
 def main():
-    print("=" * 60)
-    print("Font Subsetting Script - Icon CDN")
-    print("=" * 60)
-    
-    # Check if pyftsubset is available
-    try:
-        subprocess.run(['pyftsubset', '--version'], capture_output=True, check=True)
-    except (subprocess.CalledProcessError, FileNotFoundError):
-        print("❌ ERROR: pyftsubset tidak ditemukan!")
-        print("\nInstall fonttools dengan:")
-        print("  pip install fonttools brotli zopfli")
-        return False
+    print("=" * 70)
+    print("Font Subsetting Script v3 - Icon CDN (Fixed)")
+    print("=" * 70)
     
     # Create output directory
     output_dir = Path('webfonts-subset')
@@ -100,52 +82,67 @@ def main():
     print(f"\n📁 Output directory: {output_dir}/\n")
     
     success_count = 0
+    total_size = 0
     
-    # Process each font variant
+    # Process each variant
     for variant_name, variant_config in ICONS_TO_SUBSET.items():
         print(f"\n🔤 Processing: {variant_name}")
         print(f"   Font file: {variant_config['font_file']}")
         print(f"   Icons: {', '.join(variant_config['icons'])}")
         
         # Get codepoints for this variant
-        codepoints = get_unicode_codepoints(variant_config['icons'])
-        print(f"   Codepoints: {codepoints}")
+        codepoints = []
+        for icon in variant_config['icons']:
+            if icon in ICON_UNICODE_MAP:
+                codepoints.append(ICON_UNICODE_MAP[icon])
+        
+        print(f"   Codepoints: {[hex(cp) for cp in codepoints]}")
         
         input_font = Path('webfonts') / variant_config['font_file']
         output_font = output_dir / f"{variant_name}-subset.woff2"
         
-        # Check if input file exists
+        # Check if input exists
         if not input_font.exists():
             print(f"   ❌ Input file not found: {input_font}")
             continue
         
         # Run subsetting
-        if subset_font(str(input_font), str(output_font), codepoints):
+        success, size_kb = subset_font_direct(str(input_font), str(output_font), codepoints)
+        if success:
             success_count += 1
+            total_size += size_kb
     
-    print("\n" + "=" * 60)
-    print(f"✅ Subsetting completed! {success_count}/{len(ICONS_TO_SUBSET)} variants processed")
-    print("=" * 60)
+    print("\n" + "=" * 70)
+    print(f"✅ Done! {success_count}/{len(ICONS_TO_SUBSET)} variants processed")
+    print("=" * 70)
     
-    # Generate summary
+    # Summary
     print("\n📊 Summary:")
-    total_size = sum(
-        os.path.getsize(output_dir / f"{variant}-subset.woff2") / 1024
-        for variant in ICONS_TO_SUBSET.keys()
-        if (output_dir / f"{variant}-subset.woff2").exists()
-    )
-    print(f"   Total size (all subset fonts): {total_size:.2f} KB")
-    print(f"   Original size: ~476 KB")
-    print(f"   Reduction: {((476 - total_size) / 476 * 100):.1f}%")
+    if success_count > 0:
+        for variant in ICONS_TO_SUBSET.keys():
+            font_path = output_dir / f"{variant}-subset.woff2"
+            if font_path.exists():
+                size_kb = os.path.getsize(font_path) / 1024
+                print(f"   {variant}: {size_kb:.2f} KB")
+        
+        print(f"\n   Total size: {total_size:.2f} KB")
+        print(f"   Original size: ~476 KB")
+        reduction = ((476 - total_size) / 476 * 100) if total_size > 0 else 0
+        print(f"   Reduction: {reduction:.1f}%")
     
     print("\n📝 Next steps:")
-    print("   1. Review files in webfonts-subset/")
-    print("   2. Replace old webfonts/ dengan webfonts-subset/ (atau update references)")
-    print("   3. Update all.js untuk load per-icon (script akan diberikan)")
-    print("   4. Push ke GitHub → auto-deploy")
+    print("   1. ✅ Verify webfonts-subset/ folder dengan 3 font files")
+    print("   2. Replace all.js dengan all-updated.js")
+    print("   3. git add -A && git commit -m 'feat: dynamic icon subsetting' && git push")
     
-    return True
+    return success_count > 0
 
 if __name__ == '__main__':
-    success = main()
-    exit(0 if success else 1)
+    try:
+        success = main()
+        exit(0 if success else 1)
+    except Exception as e:
+        print(f"\n❌ Fatal error: {e}")
+        import traceback
+        traceback.print_exc()
+        exit(1)
