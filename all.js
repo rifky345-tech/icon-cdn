@@ -1,149 +1,187 @@
-(function() {
-    const scriptSrc = document.currentScript ? document.currentScript.src : 'https://icon-cdn.pages.dev/all.js';
-    const baseUrl = scriptSrc.replace('all.js', 'css/');
-    
-    const styles = {
-        'fa-solid': 'solid.css', 'fas': 'solid.css',
-        'fa-regular': 'regular.css', 'far': 'regular.css',
-        'fa-light': 'light.css', 'fal': 'light.css',
-        'fa-thin': 'thin.css', 'fat': 'thin.css',
-        'fa-duotone': 'duotone.css', 'fad': 'duotone.css',
-        'fa-brands': 'brands.css', 'fab': 'brands.css',
-        'fa-sharp-solid': 'sharp-solid.css',
-        'fa-sharp-regular': 'sharp-regular.css',
-        'fa-sharp-light': 'sharp-light.css',
-        'fa-sharp-thin': 'sharp-thin.css',
-        'fa-sharp-duotone-solid': 'sharp-duotone-solid.css',
-        'fa-sharp-duotone-regular': 'sharp-duotone-regular.css',
-        'fa-sharp-duotone-light': 'sharp-duotone-light.css',
-        'fa-sharp-duotone-thin': 'sharp-duotone-thin.css',
-        'fa-semibold': 'utility-semibold.css',
-        'fa-utility': 'utility-semibold.css',
-        'fa-utility-fill': 'utility-fill-semibold.css',
-        'fa-utility-duo': 'utility-duo-semibold.css',
-        'fa-jelly': 'jelly-regular.css',
-        'fa-jelly-fill': 'jelly-fill-regular.css',
-        'fa-jelly-duo': 'jelly-duo-regular.css',
-        'fa-chisel': 'chisel-regular.css',
-        'fa-etch': 'etch-solid.css',
-        'fa-notdog': 'notdog-solid.css',
-        'fa-notdog-duo': 'notdog-duo-solid.css',
-        'fa-slab': 'slab-regular.css',
-        'fa-slab-press': 'slab-press-regular.css',
-        'fa-whiteboard': 'whiteboard-semibold.css',
-        'fa-graphite': 'graphite-thin.css',
-        'fa-thumbprint': 'thumbprint-light.css'
-    };
+/**
+ * Smart Icon Font Loader
+ * Detect icon yang dipake di halaman → Load hanya subset font yang dibutuhkan
+ * Reduce dari 476KB jadi ~60KB (cuma icon yang dipake)
+ */
 
-    const loaded = new Set();
-    const injectedIcons = new Set();
-    let iconStyleEl = null;
+const _IM = {
+  "fa-arrow-down": "'\\f063'",
+  "fa-angle-left": "'\\f104'",
+  "fa-angle-right": "'\\f105'",
+  "fa-arrow-right": "'\\f061'",
+  "fa-envelope": "'\\f0e0'",
+  "fa-instagram": "'\\f16d'",
+  "fa-github": "'\\f09b'",
+  "fa-linkedin": "'\\f08c'",
+};
 
-    function loadCSS(file) {
-        if (loaded.has(file)) return;
-        const href = baseUrl + file;
-        if (!document.querySelector(`link[href="${href}"]`)) {
-            const link = document.createElement('link');
-            link.rel = 'stylesheet';
-            link.href = href;
-            document.head.appendChild(link);
-            loaded.add(file);
-        }
+// Mapping icon ke variant font dan codepoint
+const ICON_VARIANTS = {
+  "fa-utility-fill": {
+    name: "fa-utility-fill-subset",
+    icons: ["fa-arrow-down", "fa-envelope"],
+    fontFamily: "Font Awesome 7 Utility Fill",
+  },
+  "fa-utility-duo": {
+    name: "fa-utility-duo-subset",
+    icons: ["fa-angle-left", "fa-angle-right", "fa-arrow-right"],
+    fontFamily: "Font Awesome 7 Utility Duo",
+  },
+  "fa-brands": {
+    name: "fa-brands-subset",
+    icons: ["fa-instagram", "fa-github", "fa-linkedin"],
+    fontFamily: "Font Awesome 7 Brands",
+  },
+};
+
+// Cache untuk variant yang sudah di-load
+const loadedVariants = new Set();
+
+/**
+ * Extract icon class dari element
+ * Misal: class="fa-utility-fill fa-arrow-down" → ['fa-arrow-down']
+ */
+function extractIconClasses(element) {
+  const classList = Array.from(element.classList);
+  return classList.filter((cls) => cls.startsWith("fa-") && _IM[cls]);
+}
+
+/**
+ * Detect variant dari icon
+ * Misal: 'fa-arrow-down' → 'fa-utility-fill'
+ */
+function detectVariant(iconClass) {
+  for (const [variantKey, variantConfig] of Object.entries(ICON_VARIANTS)) {
+    if (variantConfig.icons.includes(iconClass)) {
+      return variantKey;
     }
+  }
+  return null;
+}
 
-    // Load base CSS (structural only, ~8.5 KiB - almost 100% used)
-    loadCSS('fontawesome-base.css');
+/**
+ * Generate @font-face CSS untuk subset font
+ */
+function generateFontFaceCSS(variantKey) {
+  const variant = ICON_VARIANTS[variantKey];
+  if (!variant) return "";
 
-    // Icon map: loaded async from icon-map.js
-    let iconMap = null;
-    let iconMapPromise = null;
+  const fontPath = `/webfonts-subset/${variant.name}.woff2`;
 
-    function loadIconMap() {
-        if (iconMap) return Promise.resolve();
-        if (iconMapPromise) return iconMapPromise;
-        iconMapPromise = fetch(baseUrl.replace('css/', '') + 'icon-map.js')
-            .then(r => r.text())
-            .then(text => {
-                // Execute to get _IM variable
-                const fn = new Function(text + '; return _IM;');
-                iconMap = fn();
-            })
-            .catch(() => {
-                // Fallback: load full fontawesome.css if icon map fails
-                loadCSS('fontawesome.css');
-                iconMap = {};
-            });
-        return iconMapPromise;
+  return `
+    @font-face {
+      font-family: "${variant.fontFamily}";
+      src: url("${fontPath}") format("woff2");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
     }
+  `;
+}
 
-    function getOrCreateStyleEl() {
-        if (!iconStyleEl) {
-            iconStyleEl = document.createElement('style');
-            iconStyleEl.id = 'fa-icon-defs';
-            document.head.appendChild(iconStyleEl);
-        }
-        return iconStyleEl;
+/**
+ * Generate CSS rules untuk icon yang dipake
+ * Misal: .fa-arrow-down { --fa: '\f063'; }
+ */
+function generateIconCSS(variantKey) {
+  const variant = ICON_VARIANTS[variantKey];
+  if (!variant) return "";
+
+  let css = `
+    /* Icons dari ${variantKey} */
+  `;
+
+  variant.icons.forEach((iconClass) => {
+    if (_IM[iconClass]) {
+      const unicode = _IM[iconClass];
+      css += `\n    .${iconClass} { --fa: ${unicode}; }`;
     }
+  });
 
-    function injectIconRules(classes) {
-        if (!iconMap) return;
-        const el = getOrCreateStyleEl();
-        let newRules = '';
-        classes.forEach(cls => {
-            if (!injectedIcons.has(cls) && iconMap[cls]) {
-                newRules += '.' + cls + '{--fa:' + iconMap[cls] + '}';
-                injectedIcons.add(cls);
-            }
-        });
-        if (newRules) {
-            el.textContent += newRules;
-        }
-    }
+  return css;
+}
 
-    function scanIcons() {
-        const icons = document.querySelectorAll('[class*="fa-"], [class^="fa"]');
-        const neededIconClasses = new Set();
+/**
+ * Inject CSS ke head
+ */
+function injectCSS(cssText) {
+  const style = document.createElement("style");
+  style.textContent = cssText;
+  style.setAttribute("data-icon-cdn", "true");
+  document.head.appendChild(style);
+}
 
-        icons.forEach(icon => {
-            const classes = Array.from(icon.classList);
-            // Load style-specific CSS files
-            Object.keys(styles).forEach(prefix => {
-                if (classes.includes(prefix)) {
-                    loadCSS(styles[prefix]);
-                }
-            });
-            // Collect icon name classes (fa-xxx)
-            classes.forEach(cls => {
-                if (cls.startsWith('fa-') && !styles[cls] && !injectedIcons.has(cls)) {
-                    neededIconClasses.add(cls);
-                }
-            });
-        });
+/**
+ * Main loader function
+ * Run ini saat DOM ready
+ */
+function loadSmartIconFonts() {
+  // Step 1: Detect semua icon yang dipake di halaman
+  const iconElements = document.querySelectorAll('[class*="fa-"]');
+  const requiredVariants = new Set();
 
-        if (neededIconClasses.size > 0) {
-            loadIconMap().then(() => injectIconRules(neededIconClasses));
-        }
-    }
-
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', scanIcons);
-    } else {
-        scanIcons();
-    }
-
-    let debounceTimer;
-    const observer = new MutationObserver((mutations) => {
-        let hasNewNodes = false;
-        for (let i = 0; i < mutations.length; i++) {
-            if (mutations[i].addedNodes.length > 0) {
-                hasNewNodes = true;
-                break;
-            }
-        }
-        if (hasNewNodes) {
-            clearTimeout(debounceTimer);
-            debounceTimer = setTimeout(scanIcons, 300); 
-        }
+  iconElements.forEach((el) => {
+    const icons = extractIconClasses(el);
+    icons.forEach((iconClass) => {
+      const variant = detectVariant(iconClass);
+      if (variant) {
+        requiredVariants.add(variant);
+      }
     });
-    observer.observe(document.documentElement, { childList: true, subtree: true });
-})();
+  });
+
+  // Step 2: Load hanya variant yang dibutuhkan
+  if (requiredVariants.size === 0) {
+    console.warn("[Icon CDN] No icons detected on this page");
+    return;
+  }
+
+  console.log("[Icon CDN] Loading variants:", Array.from(requiredVariants));
+
+  let combinedCSS = "";
+
+  requiredVariants.forEach((variantKey) => {
+    if (!loadedVariants.has(variantKey)) {
+      const fontFaceCSS = generateFontFaceCSS(variantKey);
+      const iconCSS = generateIconCSS(variantKey);
+      combinedCSS += fontFaceCSS + iconCSS;
+      loadedVariants.add(variantKey);
+    }
+  });
+
+  if (combinedCSS) {
+    injectCSS(combinedCSS);
+    console.log(`[Icon CDN] Loaded ${requiredVariants.size} variant(s)`);
+  }
+}
+
+/**
+ * Initialize when DOM is ready
+ */
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", loadSmartIconFonts);
+} else {
+  loadSmartIconFonts();
+}
+
+/**
+ * Support untuk dynamic content (SPA, lazy-loaded elements)
+ * MutationObserver untuk detect icon baru yang ditambahkan
+ */
+if (typeof MutationObserver !== "undefined") {
+  const observer = new MutationObserver(() => {
+    loadSmartIconFonts();
+  });
+
+  observer.observe(document.body, {
+    childList: true,
+    subtree: true,
+    attributes: true,
+    attributeFilter: ["class"],
+  });
+}
+
+// Export untuk testing
+if (typeof module !== "undefined" && module.exports) {
+  module.exports = { loadSmartIconFonts, ICON_VARIANTS, detectVariant };
+}
