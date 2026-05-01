@@ -1,8 +1,5 @@
-/**
- * Smart Icon Font Loader
- * Detect icon yang dipake di halaman → Load hanya subset font yang dibutuhkan
- * Reduce dari 476KB jadi ~60KB (cuma icon yang dipake)
- */
+const SCRIPT_URL = document.currentScript ? document.currentScript.src : 'https://icon-cdn.pages.dev/all.js';
+const CDN_URL = SCRIPT_URL.substring(0, SCRIPT_URL.lastIndexOf('/') + 1);
 
 const _IM = {
   "fa-arrow-down": "'\\f063'",
@@ -15,7 +12,6 @@ const _IM = {
   "fa-linkedin": "'\\f08c'",
 };
 
-// Mapping icon ke variant font dan codepoint
 const ICON_VARIANTS = {
   "fa-utility-fill": {
     name: "fa-utility-fill-subset",
@@ -34,22 +30,13 @@ const ICON_VARIANTS = {
   },
 };
 
-// Cache untuk variant yang sudah di-load
 const loadedVariants = new Set();
 
-/**
- * Extract icon class dari element
- * Misal: class="fa-utility-fill fa-arrow-down" → ['fa-arrow-down']
- */
 function extractIconClasses(element) {
   const classList = Array.from(element.classList);
   return classList.filter((cls) => cls.startsWith("fa-") && _IM[cls]);
 }
 
-/**
- * Detect variant dari icon
- * Misal: 'fa-arrow-down' → 'fa-utility-fill'
- */
 function detectVariant(iconClass) {
   for (const [variantKey, variantConfig] of Object.entries(ICON_VARIANTS)) {
     if (variantConfig.icons.includes(iconClass)) {
@@ -58,15 +45,12 @@ function detectVariant(iconClass) {
   }
   return null;
 }
-
-/**
- * Generate @font-face CSS untuk subset font
- */
+``
 function generateFontFaceCSS(variantKey) {
   const variant = ICON_VARIANTS[variantKey];
   if (!variant) return "";
 
-  const fontPath = `/webfonts-subset/${variant.name}.woff2`;
+  const fontPath = `${CDN_URL}webfonts-subset/${variant.name}.woff2`;
 
   return `
     @font-face {
@@ -79,16 +63,25 @@ function generateFontFaceCSS(variantKey) {
   `;
 }
 
-/**
- * Generate CSS rules untuk icon yang dipake
- * Misal: .fa-arrow-down { --fa: '\f063'; }
- */
 function generateIconCSS(variantKey) {
   const variant = ICON_VARIANTS[variantKey];
   if (!variant) return "";
 
   let css = `
     /* Icons dari ${variantKey} */
+    .${variantKey} {
+      font-family: "${variant.fontFamily}";
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      display: inline-block;
+      font-style: normal;
+      font-variant: normal;
+      text-rendering: auto;
+      line-height: 1;
+    }
+    .${variantKey}::before {
+      content: var(--fa);
+    }
   `;
 
   variant.icons.forEach((iconClass) => {
@@ -113,10 +106,8 @@ function injectCSS(cssText) {
 
 /**
  * Main loader function
- * Run ini saat DOM ready
  */
 function loadSmartIconFonts() {
-  // Step 1: Detect semua icon yang dipake di halaman
   const iconElements = document.querySelectorAll('[class*="fa-"]');
   const requiredVariants = new Set();
 
@@ -130,13 +121,7 @@ function loadSmartIconFonts() {
     });
   });
 
-  // Step 2: Load hanya variant yang dibutuhkan
-  if (requiredVariants.size === 0) {
-    console.warn("[Icon CDN] No icons detected on this page");
-    return;
-  }
-
-  console.log("[Icon CDN] Loading variants:", Array.from(requiredVariants));
+  if (requiredVariants.size === 0) return;
 
   let combinedCSS = "";
 
@@ -151,23 +136,17 @@ function loadSmartIconFonts() {
 
   if (combinedCSS) {
     injectCSS(combinedCSS);
-    console.log(`[Icon CDN] Loaded ${requiredVariants.size} variant(s)`);
   }
 }
 
-/**
- * Initialize when DOM is ready
- */
+// Initialize when DOM is ready
 if (document.readyState === "loading") {
   document.addEventListener("DOMContentLoaded", loadSmartIconFonts);
 } else {
   loadSmartIconFonts();
 }
 
-/**
- * Support untuk dynamic content (SPA, lazy-loaded elements)
- * MutationObserver untuk detect icon baru yang ditambahkan
- */
+// Support untuk dynamic content
 if (typeof MutationObserver !== "undefined") {
   const observer = new MutationObserver(() => {
     loadSmartIconFonts();
@@ -185,3 +164,4 @@ if (typeof MutationObserver !== "undefined") {
 if (typeof module !== "undefined" && module.exports) {
   module.exports = { loadSmartIconFonts, ICON_VARIANTS, detectVariant };
 }
+
